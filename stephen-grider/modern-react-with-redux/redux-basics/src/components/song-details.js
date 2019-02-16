@@ -11,7 +11,6 @@ const SongDetails = ({ song }) => {
       <h3>Details for:</h3>
       <p>Title: {song.title}</p>
       <p>Duration: {song.duration}</p>
-
     </div>
   );
 };
