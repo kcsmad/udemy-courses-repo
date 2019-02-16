@@ -4,8 +4,12 @@ import VideoList from './video-list'
 import VideoDetail from './video-detail';
 import youtube from '../apis/youtube';
 
-class App extends Component {
+export default class App extends Component {
   state = { videos: [], selectedVideo: null };
+
+  componentDidMount() {
+    this.onTermSubmit('yes or yes');
+  }
 
   onTermSubmit = async term => {
     const resp = await youtube.get('/search', {
@@ -14,7 +18,10 @@ class App extends Component {
       }
     });
 
-    this.setState({ videos: resp.data.items });
+    this.setState({
+      videos: resp.data.items,
+      selectedVideo: resp.data.items[0]
+    });
   };
 
   onVideoSelect = (video) => {
@@ -25,11 +32,17 @@ class App extends Component {
     return (
       <div className="ui container">
         <SearchBar onFormSubmit={this.onTermSubmit} />
-        <VideoDetail video={this.state.selectedVideo} />
-        <VideoList onVideoSelect={this.onVideoSelect} videos={this.state.videos} />
+        <div className="ui grid" >
+          <div className="ui row">
+            <div className="eleven wide column">
+              <VideoDetail video={this.state.selectedVideo} />
+            </div>
+            <div className="five wide column">
+              <VideoList onVideoSelect={this.onVideoSelect} videos={this.state.videos} />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 }
-
-export default App;
