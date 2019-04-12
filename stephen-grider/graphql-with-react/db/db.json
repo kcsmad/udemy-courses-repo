@@ -2,8 +2,8 @@
   "users": [
     {
       "id": 1,
-      "firstName": "Bill",
-      "age": 20,
+      "firstName": "Kevin Maduro",
+      "age": 26,
       "companyId": 2
     },
     {
@@ -23,11 +23,6 @@
       "firstName": "Nick",
       "age": 22,
       "companyId": 2
-    },
-    {
-      "firstName": "Kevin",
-      "age": 26,
-      "id": 5
     }
   ],
   "companies": [
